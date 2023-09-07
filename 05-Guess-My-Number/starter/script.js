@@ -5,10 +5,11 @@ let min = 1;
 let number = Math.floor(Math.random() * (max - min + 1) + min);
 let score = 20;
 let highScore = 0;
-// console.log(number);
-
+console.log(number);
 var checkValue = function () {
-  if (document.querySelector('.guess').value === number) {
+  const guess = parseInt(document.querySelector('.guess').value);
+
+  if (guess === number) {
     if (score > highScore) {
       highScore = score;
     }
@@ -17,6 +18,10 @@ var checkValue = function () {
     document.querySelector('.message').textContent = 'Congratulations!!!!🎉🎉';
   } else {
     score--;
-    document.querySelector('.message').textContent = 'Keep guessing...';
+    document.querySelector('.message').textContent =
+      guess > number ? 'Too high. Try again!' : 'Too low. Try again!';
+    document.querySelector('.score').textContent = score;
   }
 };
+
+document.querySelector('.btn.check').addEventListener('click', checkValue);
