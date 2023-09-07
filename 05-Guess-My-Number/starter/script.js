@@ -25,3 +25,6 @@ var checkValue = function () {
 };
 
 document.querySelector('.btn.check').addEventListener('click', checkValue);
+document.querySelector('.btn.again').addEventListener('click', function () {
+  window.location.reload();
+});
